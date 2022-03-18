@@ -1,0 +1,3 @@
+{
+  "mongoURI": "mongodb+srv://ric123:ric123@cluster0.dexvl.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+}
