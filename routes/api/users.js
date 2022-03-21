@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const User = require('../../models/User');
 const {
   body,
   validationResult,
@@ -7,7 +8,6 @@ const {
 const gravatar = require('gravatar');
 const bcrypt = require('bcryptjs');
 
-const User = require('../../models/User');
 // @route   POST api/users
 // @desc    Register User
 // @access  Public
@@ -15,7 +15,7 @@ router.post(
   '/',
   [
     body('name', 'Name is required').not().isEmpty(),
-    body('email', 'Please enter a valid email').isEmail,
+    body('email', 'Please enter a valid email').isEmail(),
     body(
       'password',
       'Please enter a password of at least 6 characters'
@@ -30,11 +30,10 @@ router.post(
     }
 
     const { name, email, password } = req.body;
-    console.log('Hello', name, email, password);
     try {
       // See if user exists
       let user = await User.findOne({ email });
-      console.log('Hiii', user);
+
       if (user) {
         res.status(400).json({
           errors: [{ msg: 'User already exists' }],
@@ -58,7 +57,7 @@ router.post(
       // Encrypt password
       const salt = await bcrypt.genSalt(10);
       user.password = await bcrypt.hash(password, salt);
-      await user.save;
+      await user.save();
 
       // Return jsonwebtoken
       res.send('User registered');
@@ -68,5 +67,6 @@ router.post(
     }
   }
 );
+router.get('/', (req, res) => res.send('User route'));
 
 module.exports = router;
