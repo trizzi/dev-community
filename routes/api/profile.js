@@ -226,28 +226,28 @@ router.put(
       description,
     } = req.body;
 
-    const newExp ={
-        title,
-        company,
-        location,
-        from,
-        to,
-        current,
-        description
-    }
+    const newExp = {
+      title,
+      company,
+      location,
+      from,
+      to,
+      current,
+      description,
+    };
     try {
-        const profile = await Profile.findOne({ user: req.user.id })
+      const profile = await Profile.findOne({
+        user: req.user.id,
+      });
 
-        profile.experience.unshift(newExp)
+      profile.experience.unshift(newExp);
 
-        await profile.save() 
+      await profile.save();
 
-        res.json(profile)
-
+      res.json(profile);
     } catch (err) {
-        console.error(err.message){
-            res.status(500).send('Server Error')
-        }
+      console.error(err.message);
+      res.status(500).send('Server Error');
     }
   }
 );
