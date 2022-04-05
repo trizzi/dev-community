@@ -7,6 +7,7 @@ import {
   LOGIN_FAIL,
   USER_LOADED,
   AUTH_ERROR,
+  LOGOUT,
 } from './types';
 import setAuthToken from '../utils/setAuthToken';
 
@@ -100,3 +101,10 @@ export const login =
       });
     }
   };
+
+//  Logout / CLear Profile
+export const logout = () => (dispatch) => {
+  dispatch({
+    type: LOGOUT,
+  });
+};
