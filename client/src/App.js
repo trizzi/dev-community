@@ -16,6 +16,9 @@ import setAuthToken from './utils/setAuthToken';
 import { Provider } from 'react-redux';
 import store from './store';
 
+import PrivateRoute from './components/routing/PrivateRoute';
+import Dashboard from './components/dashboard/Dashboard';
+
 import './App.css';
 
 if (localStorage.token) {
@@ -43,6 +46,14 @@ const App = () => {
                 element={<Register />}
               />
               <Route path='login' element={<Login />} />
+              <Route
+                path='dashboard'
+                element={
+                  <PrivateRoute>
+                    <Dashboard />
+                  </PrivateRoute>
+                }
+              />
             </Routes>
           </section>
         </Fragment>
