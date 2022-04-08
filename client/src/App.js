@@ -8,6 +8,7 @@ import {
 import Navbar from './components/layouts/Navbar';
 import Landing from './components/layouts/Landing';
 import Register from './components/auth/Register';
+import NoMatch from './components/layouts/NoMatch';
 import { loadUser } from './actions/auth';
 import Login from './components/auth/Login';
 import Alert from './components/layouts/Alert';
@@ -46,6 +47,7 @@ const App = () => {
                 element={<Register />}
               />
               <Route path='/login' element={<Login />} />
+              <Route path='*' element={<NoMatch />} />
               <Route
                 path='dashboard'
                 element={

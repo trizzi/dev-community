@@ -1,5 +1,9 @@
 import React from 'react';
-import { Outlet, Navigate } from 'react-router-dom';
+import {
+  Outlet,
+  Navigate,
+  // useLocation,
+} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
@@ -7,18 +11,23 @@ const PrivateRoute = ({
   component: Component,
   auth: { isAuthenticated, loading },
   ...rest
-}) => (
+}) => {
+  // const location = useLocation()
   <Outlet
     {...rest}
     render={(props) =>
       !isAuthenticated && !loading ? (
-        <Navigate to='/login' />
+        <Navigate
+          to='/login'
+          // replace
+          // state={{ from: location }}
+        />
       ) : (
         <Component {...props} />
       )
     }
-  />
-);
+  />;
+};
 
 PrivateRoute.propTypes = {
   auth: PropTypes.object.isRequired,

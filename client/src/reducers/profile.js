@@ -6,7 +6,7 @@ import {
 const initialState = {
   profile: null,
   profiles: [],
-  repros: [],
+  repos: [],
   loading: true,
   error: {},
 };
