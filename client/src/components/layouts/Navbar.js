@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -41,9 +41,7 @@ const Navbar = ({
         </Link>
       </h1>
       {!loading && (
-        <Fragment>
-          {isAuthenticated ? authLinks : guestLinks}
-        </Fragment>
+        <>{isAuthenticated ? authLinks : guestLinks}</>
       )}
     </nav>
   );

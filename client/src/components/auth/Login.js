@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { login } from '../../actions/auth';
@@ -10,7 +10,7 @@ const Login = ({ login, isAuthenticated }) => {
     password: '',
   });
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const { email, password } = formData;
 
@@ -29,7 +29,7 @@ const Login = ({ login, isAuthenticated }) => {
 
   // Redirect login page to dashboard if logged in
   if (isAuthenticated) {
-    return navigate('/dashboard');
+    return <Navigate to='/dashboard' />;
   }
 
   return (

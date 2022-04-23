@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from 'react';
 import { connect } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import { setAlert } from '../../actions/alert';
 import { register } from '../../actions/auth';
 import PropTypes from 'prop-types';
@@ -17,7 +17,7 @@ const Register = ({
     password2: '',
   });
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const { name, email, password, password2 } = formData;
 
@@ -39,7 +39,7 @@ const Register = ({
 
   // Redirects register page to dashboard
   if (isAuthenticated) {
-    return navigate('/dashboard');
+    return <Navigate to='/dashboard' />;
   }
 
   return (

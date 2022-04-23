@@ -1,36 +1,20 @@
 import React from 'react';
-import {
-  Outlet,
-  Navigate,
-  // useLocation,
-} from 'react-router-dom';
+import { Navigate, Outlet } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 const PrivateRoute = ({
-  component: Component,
   auth: { isAuthenticated, loading },
-  ...rest
-}) => {
-  // const location = useLocation()
-  <Outlet
-    {...rest}
-    render={(props) =>
-      !isAuthenticated && !loading ? (
-        <Navigate
-          to='/login'
-          // replace
-          // state={{ from: location }}
-        />
-      ) : (
-        <Component {...props} />
-      )
-    }
-  />;
-};
+}) =>
+  isAuthenticated && loading ? (
+    <Outlet />
+  ) : (
+    <Navigate to='/login' />
+  );
 
 PrivateRoute.propTypes = {
-  auth: PropTypes.object.isRequired,
+  isAuthenticated: PropTypes.bool,
+  loading: PropTypes.bool,
 };
 
 const mapStateToProps = (state) => ({
@@ -38,3 +22,21 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps)(PrivateRoute);
+
+// const ProtectedRoute = ({
+//   component: Component,
+//   auth: { isAuthenticated, loading },
+//   ...rest
+// }) => {
+//   <Outlet
+//     {...rest}
+//     render={(props) =>
+//       !isAuthenticated && !loading ? (
+//         <Navigate to='/login' />
+//       ) : (
+//         <Component {...props} />
+//       )
+//     }
+//   />;
+
+// };

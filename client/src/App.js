@@ -1,5 +1,4 @@
-import { Fragment, useEffect } from 'react';
-
+import React, { Fragment, useEffect } from 'react';
 import {
   BrowserRouter,
   Routes,
@@ -13,6 +12,7 @@ import { loadUser } from './actions/auth';
 import Login from './components/auth/Login';
 import Alert from './components/layouts/Alert';
 import setAuthToken from './utils/setAuthToken';
+
 // Redux
 import { Provider } from 'react-redux';
 import store from './store';
@@ -47,15 +47,22 @@ const App = () => {
                 element={<Register />}
               />
               <Route path='/login' element={<Login />} />
-              <Route path='*' element={<NoMatch />} />
+
               <Route
-                path='dashboard'
+                path='/dashboard'
                 element={
                   <PrivateRoute>
                     <Dashboard />
                   </PrivateRoute>
                 }
               />
+
+              {/* <Route
+                path='/dashboard'
+                element={<ProtectedRoute />}>
+                <Route element={<Dashboard />} />
+              </Route> */}
+              <Route path='*' element={<NoMatch />} />
             </Routes>
           </section>
         </Fragment>
