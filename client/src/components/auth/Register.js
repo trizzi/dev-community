@@ -17,8 +17,6 @@ const Register = ({
     password2: '',
   });
 
-  // const navigate = useNavigate();
-
   const { name, email, password, password2 } = formData;
 
   const onChange = (e) => {

@@ -10,8 +10,6 @@ const Login = ({ login, isAuthenticated }) => {
     password: '',
   });
 
-  // const navigate = useNavigate();
-
   const { email, password } = formData;
 
   const onChange = (e) => {

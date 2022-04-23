@@ -41,6 +41,7 @@ const App = () => {
           </Routes>
           <section className='container'>
             <Alert />
+
             <Routes>
               <Route
                 path='/register'
@@ -57,11 +58,6 @@ const App = () => {
                 }
               />
 
-              {/* <Route
-                path='/dashboard'
-                element={<ProtectedRoute />}>
-                <Route element={<Dashboard />} />
-              </Route> */}
               <Route path='*' element={<NoMatch />} />
             </Routes>
           </section>

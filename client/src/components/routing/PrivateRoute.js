@@ -22,21 +22,3 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps)(PrivateRoute);
-
-// const ProtectedRoute = ({
-//   component: Component,
-//   auth: { isAuthenticated, loading },
-//   ...rest
-// }) => {
-//   <Outlet
-//     {...rest}
-//     render={(props) =>
-//       !isAuthenticated && !loading ? (
-//         <Navigate to='/login' />
-//       ) : (
-//         <Component {...props} />
-//       )
-//     }
-//   />;
-
-// };
