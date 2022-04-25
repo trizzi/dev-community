@@ -4,6 +4,7 @@ import { Link, Navigate } from 'react-router-dom';
 import { setAlert } from '../../actions/alert';
 import { register } from '../../actions/auth';
 import PropTypes from 'prop-types';
+import containerWrapper from '../layouts/containerWrapper';
 
 const Register = ({
   setAlert,
@@ -117,7 +118,9 @@ const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
 });
 
-export default connect(mapStateToProps, {
-  setAlert,
-  register,
-})(Register);
+export default containerWrapper(
+  connect(mapStateToProps, {
+    setAlert,
+    register,
+  })(Register)
+);

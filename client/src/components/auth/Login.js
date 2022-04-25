@@ -1,5 +1,6 @@
 import React, { Fragment, useState } from 'react';
 import { Link, Navigate } from 'react-router-dom';
+import containerWrapper from '../layouts/containerWrapper';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { login } from '../../actions/auth';
@@ -87,4 +88,6 @@ const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
 });
 
-export default connect(mapStateToProps, { login })(Login);
+export default containerWrapper(
+  connect(mapStateToProps, { login })(Login)
+);

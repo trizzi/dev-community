@@ -1,5 +1,6 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, Fragment } from 'react';
 import Spinner from '../layouts/Spinner';
+import containerWrapper from '../layouts/containerWrapper';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -18,7 +19,7 @@ const Dashboard = ({
   return loading && profile === null ? (
     <Spinner />
   ) : (
-    <>
+    <Fragment>
       <h1 className='large text-primary'>Dashboard</h1>
       <p className='lead'>
         <i className='fas fa-user'>
@@ -26,9 +27,9 @@ const Dashboard = ({
         </i>
       </p>
       {profile !== null ? (
-        <>has</>
+        <Fragment>has</Fragment>
       ) : (
-        <>
+        <Fragment>
           <p>
             You have not setup a profile, please add some
             info
@@ -38,9 +39,9 @@ const Dashboard = ({
             className='btn btn-primary my-1'>
             Create Profile
           </Link>
-        </>
+        </Fragment>
       )}
-    </>
+    </Fragment>
   );
 };
 
@@ -55,6 +56,8 @@ const mapStateToProps = (state) => ({
   profile: state.profile,
 });
 
-export default connect(mapStateToProps, {
-  getCurrentProfile,
-})(Dashboard);
+export default containerWrapper(
+  connect(mapStateToProps, {
+    getCurrentProfile,
+  })(Dashboard)
+);

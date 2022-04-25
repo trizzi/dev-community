@@ -8,6 +8,7 @@ import Navbar from './components/layouts/Navbar';
 import Landing from './components/layouts/Landing';
 import Register from './components/auth/Register';
 import NoMatch from './components/layouts/NoMatch';
+import CreateProfile from './components/profile-form/CreateProfile';
 import { loadUser } from './actions/auth';
 import Login from './components/auth/Login';
 import Alert from './components/layouts/Alert';
@@ -38,29 +39,36 @@ const App = () => {
           <Navbar />
           <Routes>
             <Route path='/' element={<Landing />} />
+
+            <Route
+              path='/register'
+              element={<Register />}
+            />
+
+            <Route path='/login' element={<Login />} />
+
+            <Route
+              path='/dashboard'
+              element={
+                <PrivateRoute>
+                  <Dashboard />
+                </PrivateRoute>
+              }
+            />
+
+            <Route
+              path='/create-profile'
+              element={
+                <PrivateRoute>
+                  <CreateProfile />
+                </PrivateRoute>
+              }
+            />
+
+            <Route path='*' element={<NoMatch />} />
           </Routes>
-          <section className='container'>
-            <Alert />
 
-            <Routes>
-              <Route
-                path='/register'
-                element={<Register />}
-              />
-              <Route path='/login' element={<Login />} />
-
-              <Route
-                path='/dashboard'
-                element={
-                  <PrivateRoute>
-                    <Dashboard />
-                  </PrivateRoute>
-                }
-              />
-
-              <Route path='*' element={<NoMatch />} />
-            </Routes>
-          </section>
+          <Alert />
         </Fragment>
       </BrowserRouter>
     </Provider>

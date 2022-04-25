@@ -12,7 +12,7 @@ const Navbar = ({
     <ul>
       <li>
         <Link to='/dashboard'>
-          <i className='fas fa-sign-out-alt'></i>{' '}
+          <i className='fas fa-user'></i>{' '}
           <span className='hide-sm'>Dashboard</span>
         </Link>
       </li>
