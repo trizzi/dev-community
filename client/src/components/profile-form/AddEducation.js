@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { addEducation } from '../../actions/profile';
 import PropTypes from 'prop-types';
+import containerWrapper from '../layouts/containerWrapper';
 
 const AddEducation = ({ addEducation }) => {
   const [formData, setFormData] = useState({
@@ -105,7 +106,7 @@ const AddEducation = ({ addEducation }) => {
               }}
             />
             {''}
-            Current Job
+            Current School
           </p>
         </div>
         <div className='form-group'>
@@ -146,6 +147,6 @@ AddEducation.propTypes = {
   addEducation: PropTypes.func.isRequired,
 };
 
-export default connect(null, { addEducation })(
-  AddEducation
+export default containerWrapper(
+  connect(null, { addEducation })(AddEducation)
 );

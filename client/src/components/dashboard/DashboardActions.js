@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import containerWrapper from '../layouts/containerWrapper';
 
 const DashboardActions = () => {
   return (
@@ -29,4 +30,4 @@ const DashboardActions = () => {
   );
 };
 
-export default DashboardActions;
+export default containerWrapper(DashboardActions);
