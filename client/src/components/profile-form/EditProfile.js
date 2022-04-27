@@ -76,7 +76,7 @@ const EditProfile = ({
           ? ''
           : profile.instagram,
     });
-  }, [loading]);
+  }, [loading, getCurrentProfile]);
 
   const {
     company,
