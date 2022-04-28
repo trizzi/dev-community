@@ -13,6 +13,7 @@ import EditProfile from './components/profile-form/EditProfile';
 import AddExperience from './components/profile-form/AddExperience';
 import AddEducation from './components/profile-form/AddEducation';
 import Profiles from './components/profiles/Profiles';
+import Profile from './components/profile/Profile';
 import { loadUser } from './actions/auth';
 import Login from './components/auth/Login';
 import Alert from './components/layouts/Alert';
@@ -54,6 +55,11 @@ const App = () => {
             <Route
               path='/profiles'
               element={<Profiles />}
+            />
+
+            <Route
+              path='/profile/:id'
+              element={<Profile />}
             />
 
             <Route

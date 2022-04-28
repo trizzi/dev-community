@@ -48,9 +48,11 @@ Profiles.propTypes = {
   profile: PropTypes.object.isRequired,
 };
 
-const mapStateToProps = (state) => ({
-  profile: state.profile,
-});
+function mapStateToProps(state) {
+  return {
+    profile: state.profile,
+  };
+}
 
 export default containerWrapper(
   connect(mapStateToProps, { getProfiles })(Profiles)
