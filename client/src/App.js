@@ -14,7 +14,8 @@ import AddExperience from './components/profile-form/AddExperience';
 import AddEducation from './components/profile-form/AddEducation';
 import Profiles from './components/profiles/Profiles';
 import Profile from './components/profile/Profile';
-import Posts from './components/post/Posts';
+import Posts from './components/posts/Posts';
+import Post from './components/post/Post';
 import { loadUser } from './actions/auth';
 import Login from './components/auth/Login';
 import Alert from './components/layouts/Alert';
@@ -113,6 +114,15 @@ const App = () => {
               element={
                 <PrivateRoute>
                   <Posts />
+                </PrivateRoute>
+              }
+            />
+
+            <Route
+              path='/post/:id'
+              element={
+                <PrivateRoute>
+                  <Post />
                 </PrivateRoute>
               }
             />
