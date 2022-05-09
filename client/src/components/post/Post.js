@@ -2,6 +2,7 @@ import React, { Fragment, useEffect } from 'react';
 import containerWrapper from '../layouts/containerWrapper';
 import PostItem from '../posts/PostItem';
 import Spinner from '../layouts/Spinner';
+import CommentForm from './CommentForm';
 import { connect } from 'react-redux';
 import { getPost } from '../../actions/post';
 import { Link } from 'react-router-dom';
@@ -23,6 +24,7 @@ const Post = ({
         Back To Posts
       </Link>
       <PostItem post={post} showActions={false} />
+      <CommentForm postId={post._Id} />
     </Fragment>
   );
 };
