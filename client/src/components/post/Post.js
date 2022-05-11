@@ -3,6 +3,7 @@ import containerWrapper from '../layouts/containerWrapper';
 import PostItem from '../posts/PostItem';
 import Spinner from '../layouts/Spinner';
 import CommentForm from './CommentForm';
+import CommentItem from './CommentItem';
 import { connect } from 'react-redux';
 import { getPost } from '../../actions/post';
 import { Link } from 'react-router-dom';
@@ -25,6 +26,15 @@ const Post = ({
       </Link>
       <PostItem post={post} showActions={false} />
       <CommentForm postId={post._Id} />
+      <div className='comments'>
+        {post.comments.map((comment) => (
+          <CommentItem
+            key={comment._id}
+            comment={comment}
+            postId={post._id}
+          />
+        ))}
+      </div>
     </Fragment>
   );
 };
