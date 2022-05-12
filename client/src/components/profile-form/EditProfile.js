@@ -22,6 +22,7 @@ const EditProfile = ({
     website: '',
     location: '',
     status: '',
+    skills: '',
     githubusername: '',
     bio: '',
     twitter: '',
