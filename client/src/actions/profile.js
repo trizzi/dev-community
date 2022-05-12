@@ -1,5 +1,4 @@
 import axios from 'axios';
-// import { useNavigate } from 'react-router-dom';
 import { setAlert } from './alert';
 
 import {
@@ -105,7 +104,6 @@ export const createProfile = (
   formData,
   edit = false
 ) => async (dispatch) => {
-  // const navigate = useNavigate();
   try {
     const config = {
       headers: {
@@ -129,10 +127,6 @@ export const createProfile = (
         'success'
       )
     );
-
-    // if (!edit) {
-    //   navigate('/dashboard');
-    // }
   } catch (err) {
     const errors = err.response.data.errors;
 

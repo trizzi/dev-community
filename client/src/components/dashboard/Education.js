@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import Moment from 'moment';
+import Moment from 'react-moment';
 import { connect } from 'react-redux';
 import { deleteEducation } from '../../actions/profile';
 import PropTypes from 'prop-types';

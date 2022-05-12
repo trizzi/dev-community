@@ -11,6 +11,7 @@ const CreateProfile = ({ createProfile }) => {
     website: '',
     location: '',
     status: '',
+    skills: '',
     githubusername: '',
     bio: '',
     twitter: '',
@@ -55,10 +56,6 @@ const CreateProfile = ({ createProfile }) => {
     navigate('/dashboard');
   };
 
-  // if (!edit) {
-  //   navigate('/dashboard');
-  // }
-
   return (
     <Fragment>
       <h1 className='large text-primary'>
@@ -75,7 +72,7 @@ const CreateProfile = ({ createProfile }) => {
       <form className='form' onSubmit={(e) => onSubmit(e)}>
         <div className='form-group'>
           <select
-            className='status'
+            name='status'
             value={status}
             onChange={(e) => onChange(e)}>
             <option value='0'>
@@ -204,7 +201,7 @@ const CreateProfile = ({ createProfile }) => {
               <input
                 type='text'
                 placeholder='Facebook URL'
-                name='facebooks'
+                name='facebook'
                 value={facebook}
                 onChange={(e) => onChange(e)}
               />
