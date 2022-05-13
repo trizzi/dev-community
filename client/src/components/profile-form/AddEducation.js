@@ -51,6 +51,7 @@ const AddEducation = ({ addEducation }) => {
         onSubmit={(e) => {
           e.preventDefault();
           addEducation(formData);
+          navigate('/dashboard');
         }}>
         <div className='form-group'>
           <input
