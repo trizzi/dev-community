@@ -101,7 +101,7 @@ const App = () => {
             />
 
             <Route
-              path='/add-eduction'
+              path='/add-education'
               element={
                 <PrivateRoute>
                   <AddEducation />

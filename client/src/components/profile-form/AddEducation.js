@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { addEducation } from '../../actions/profile';
 import PropTypes from 'prop-types';
@@ -17,6 +17,8 @@ const AddEducation = ({ addEducation }) => {
   });
 
   const [toDateDisabled, toggleDisabled] = useState(false);
+
+  const navigate = useNavigate();
 
   const {
     school,

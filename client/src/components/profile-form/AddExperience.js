@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { addExperience } from '../../actions/profile';
 import PropTypes from 'prop-types';
@@ -17,6 +17,8 @@ const AddExperience = ({ addExperience }) => {
   });
 
   const [toDateDisabled, toggleDisabled] = useState(false);
+
+  const navigate = useNavigate();
 
   const {
     company,
@@ -51,6 +53,7 @@ const AddExperience = ({ addExperience }) => {
         onSubmit={(e) => {
           e.preventDefault();
           addExperience(formData);
+          navigate('/dashboard');
         }}>
         <div className='form-group'>
           <input
