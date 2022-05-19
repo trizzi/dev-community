@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { setAlert } from './alert';
-
 import {
   GET_PROFILES,
   GET_PROFILE,
@@ -51,6 +50,52 @@ export const getProfiles = () => async (dispatch) => {
   }
 };
 
+// Create or update profile
+export const createProfile = (
+  formData,
+  edit = false
+) => async (dispatch) => {
+  try {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+
+    const res = await axios.post(
+      '/api/profile',
+      formData,
+      config
+    );
+    dispatch({
+      type: GET_PROFILE,
+      payload: res.data,
+    });
+
+    dispatch(
+      setAlert(
+        edit ? 'Profile Updated' : 'Profile Created',
+        'success'
+      )
+    );
+  } catch (err) {
+    const errors = err.response.data.errors;
+
+    if (errors) {
+      errors.forEach((error) =>
+        dispatch(setAlert(error.msg, 'danger'))
+      );
+    }
+    dispatch({
+      type: PROFILE_ERROR,
+      payload: {
+        msg: err.response.statusText,
+        status: err.response.status,
+      },
+    });
+  }
+};
+
 // Get profiles by IDs
 export const getProfileById = (userId) => async (
   dispatch
@@ -89,52 +134,6 @@ export const getGithubRepos = (username) => async (
       payload: res.data,
     });
   } catch (err) {
-    dispatch({
-      type: PROFILE_ERROR,
-      payload: {
-        msg: err.response.statusText,
-        status: err.response.status,
-      },
-    });
-  }
-};
-
-// Create or update profile
-export const createProfile = (
-  formData,
-  edit = false
-) => async (dispatch) => {
-  try {
-    const config = {
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    };
-
-    const res = await axios.post(
-      '/api/profile',
-      formData,
-      config
-    );
-    dispatch({
-      type: GET_PROFILE,
-      payload: res.data,
-    });
-
-    dispatch(
-      setAlert(
-        edit ? 'Profile Updated' : 'Profile Created',
-        'success'
-      )
-    );
-  } catch (err) {
-    const errors = err.response.data.errors;
-
-    if (errors) {
-      errors.forEach((error) =>
-        dispatch(setAlert(error.msg, 'danger'))
-      );
-    }
     dispatch({
       type: PROFILE_ERROR,
       payload: {
@@ -284,7 +283,7 @@ export const deleteEducation = (id) => async (dispatch) => {
 };
 
 // Delete Account & Profile
-export const deleteAccount = (id) => async (dispatch) => {
+export const deleteAccount = () => async (dispatch) => {
   if (
     window.confirm('Are you sure? This can NOT be undone!')
   ) {

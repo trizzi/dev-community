@@ -3,7 +3,7 @@ import containerWrapper from '../layouts/containerWrapper';
 import Spinner from '../layouts/Spinner';
 import ProfileTop from './ProfileTop';
 import ProfileAbout from './ProfileAbout';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getProfileById } from '../../actions/profile';
 import PropTypes from 'prop-types';
@@ -15,11 +15,11 @@ const Profile = ({
   getProfileById,
   profile: { profile, loading },
   auth,
-  match,
 }) => {
+  const { id } = useParams();
   useEffect(() => {
-    getProfileById(match.params.id);
-  }, [getProfileById]);
+    getProfileById(id);
+  }, [getProfileById, id]);
 
   return (
     <Fragment>
@@ -44,6 +44,10 @@ const Profile = ({
             <ProfileAbout profile={profile} />
             <div className='profile-exp bg-whit p-2'>
               <h2 className='text-primary'>Experience</h2>
+              {console.log(
+                'profile!!!!1',
+                typeof profile.experience
+              )}
               {profile.experience.length > 0 ? (
                 <Fragment>
                   {profile.experience.map((experience) => (
@@ -52,12 +56,16 @@ const Profile = ({
                       experience={experience}
                     />
                   ))}
+                  {console.log('profile!!!!2', profile)}
                 </Fragment>
               ) : (
                 <h4>No experience credentials</h4>
               )}
+              {console.log(
+                'profile!!!!3',
+                profile.typeOf()
+              )}
             </div>
-
             <div className='profile-edu bg-whit p-2'>
               <h2 className='text-primary'>Education</h2>
               {profile.education.length > 0 ? (
@@ -73,7 +81,6 @@ const Profile = ({
                 <h4>No education credentials</h4>
               )}
             </div>
-
             {profile.githubusername && (
               <ProfileGithub
                 username={profile.githubusername}

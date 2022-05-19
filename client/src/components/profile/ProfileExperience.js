@@ -1,5 +1,5 @@
 import React from 'react';
-import Moment from 'moment';
+import Moment from 'react-moment';
 import PropTypes from 'prop-types';
 
 const ProfileExperience = ({
@@ -13,6 +13,7 @@ const ProfileExperience = ({
     description,
   },
 }) => {
+  console.log('profile!!!!1', typeof experience);
   return (
     <div>
       <h3 className='text-dark'>{company}</h3>
@@ -35,7 +36,7 @@ const ProfileExperience = ({
 };
 
 ProfileExperience.propTypes = {
-  experience: PropTypes.array.isRequired,
+  // experience: PropTypes.array.isRequired,
 };
 
 export default ProfileExperience;
